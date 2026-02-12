@@ -17,7 +17,8 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\TranslationsAssociationFi
 use Shopware\Core\System\Country\Aggregate\CountryState\CountryStateDefinition;
 use Shopware\Core\System\Country\CountryDefinition;
 use SwagUserPlug\Core\Content\User\Aggregate\UserTranslation\UserTranslationDefinition;
-
+use Shopware\Core\Framework\DataAbstractionLayer\EntityCollection;
+use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 
 class UserDefinition extends EntityDefinition
 {
@@ -27,7 +28,15 @@ class UserDefinition extends EntityDefinition
     {
         return self::ENTITY_NAME;
     }
+    public function getEntityClass(): string
+{
+    return Entity::class;
+}
 
+public function getCollectionClass(): string
+{
+    return EntityCollection::class;
+}
     protected function defineFields(): FieldCollection
     {
         return new FieldCollection([
@@ -45,7 +54,10 @@ class UserDefinition extends EntityDefinition
             new ManyToOneAssociationField('countryState', 'country_state_id', 'id', CountryStateDefinition::class, false),
             new ManyToOneAssociationField('product', 'product_id', 'id', ProductDefinition::class, false),
             new ManyToOneAssociationField('media', 'media_id', 'id', MediaDefinition::class, false),
-            (new TranslationsAssociationField(UserTranslationDefinition::class,'swag_user_id'))
+            new TranslationsAssociationField(
+    UserTranslationDefinition::class,
+    'swag_user_id'
+),
 
         ]);
     }
