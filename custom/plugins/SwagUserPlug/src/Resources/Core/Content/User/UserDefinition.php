@@ -17,8 +17,6 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\TranslationsAssociationFi
 use Shopware\Core\System\Country\Aggregate\CountryState\CountryStateDefinition;
 use Shopware\Core\System\Country\CountryDefinition;
 use SwagUserPlug\Core\Content\User\Aggregate\UserTranslation\UserTranslationDefinition;
-use SwagUserPlug\Core\Content\User\UserEntity;
-use SwagUserPlug\Core\Content\User\UserCollection;
 
 
 class UserDefinition extends EntityDefinition
@@ -28,16 +26,6 @@ class UserDefinition extends EntityDefinition
     public function getEntityName(): string
     {
         return self::ENTITY_NAME;
-    }
-
-    public function getEntityClass(): string
-    {
-        return UserEntity::class;
-    }
-
-    public function getCollectionClass(): string
-    {
-        return UserCollection::class;
     }
 
     protected function defineFields(): FieldCollection
