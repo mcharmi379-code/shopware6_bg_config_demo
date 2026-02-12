@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Swag\UserPlug\Core\Content\User;
+namespace SwagUserPlug\Core\Content\User;
 
 use Shopware\Core\Content\Media\MediaDefinition;
 use Shopware\Core\Content\Product\ProductDefinition;
@@ -16,7 +16,10 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\TranslatedField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\TranslationsAssociationField;
 use Shopware\Core\System\Country\Aggregate\CountryState\CountryStateDefinition;
 use Shopware\Core\System\Country\CountryDefinition;
-use Swag\BasicExample\Core\Content\Example\Aggregate\ExampleTranslation\UserTranslationDefinition;
+use SwagUserPlug\Core\Content\User\Aggregate\UserTranslation\UserTranslationDefinition;
+use SwagUserPlug\Core\Content\User\UserEntity;
+use SwagUserPlug\Core\Content\User\UserCollection;
+
 
 class UserDefinition extends EntityDefinition
 {
@@ -27,13 +30,23 @@ class UserDefinition extends EntityDefinition
         return self::ENTITY_NAME;
     }
 
+    public function getEntityClass(): string
+    {
+        return UserEntity::class;
+    }
+
+    public function getCollectionClass(): string
+    {
+        return UserCollection::class;
+    }
+
     protected function defineFields(): FieldCollection
     {
         return new FieldCollection([
             (new IdField('id', 'id'))->addFlags(new Required(), new PrimaryKey()),
             (new TranslatedField('name'))->addFlags(new Required()),
             (new TranslatedField('city'))->addFlags(new Required()),
-            (new BoolField('is_active','isActExampleTranslationDefinitionive'))->addFlags(new Required()),
+          (new BoolField('is_active', 'isActive'))->addFlags(new Required()),
             (new FkField('country_id', 'countryId', CountryDefinition::class)),
             (new FkField('country_state_id', 'countryStateId', CountryStateDefinition::class)),
             (new FkField('product_id', 'productId', ProductDefinition::class)),

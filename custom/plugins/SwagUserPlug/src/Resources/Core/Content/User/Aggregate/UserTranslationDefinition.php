@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Swag\BasicExample\Core\Content\Example\Aggregate\ExampleTranslation;
+namespace SwagUserPlug\Core\Content\User\Aggregate\UserTranslation;
 
 use Shopware\Core\Framework\DataAbstractionLayer\EntityTranslationDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
-use Swag\UserPlug\Core\Content\User\UserDefinition;
+use SwagUserPlug\Core\Content\User\UserDefinition;
 
 class UserTranslationDefinition extends EntityTranslationDefinition
 {
