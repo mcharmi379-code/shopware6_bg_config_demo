@@ -1,0 +1,27 @@
+{
+    "name": "swag-user-plug/swag-user-plug",
+    "description": "This plugin is used to add user related Information.",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.0",
+    "license": "MIT",
+    "require": {
+        "shopware/core": "~6.7.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "SwagUserPlug\\SwagUserPlug",
+        "label": {
+            "de-DE": "User Plugin",
+            "en-GB": "User Plugin"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "SwagUserPlug\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SwagUserPlug\\Tests\\": "tests/"
+        }
+    }
+}
